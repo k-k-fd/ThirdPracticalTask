@@ -8,5 +8,6 @@ obs = EarthLocation(lat = 43 * u.deg + 79 * u.arcmin + 48 * u.arcsec, lon = -79 
 time_shift = -4 * u.hour
 # e.g. print(Time.now() + time_shift)
 
+print(dir(astropy.time))
 
 
