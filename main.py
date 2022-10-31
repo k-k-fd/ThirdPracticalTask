@@ -1,16 +1,12 @@
-# This is a sample Python script.
+import astropy.units as u
+from astropy.coordinates import EarthLocation
+from astropy.time import Time
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+obs = EarthLocation(lat = 43 * u.deg + 79 * u.arcmin + 48 * u.arcsec, lon = -79 * u.deg + 34 * u.arcmin + 82 * u.arcsec)
+# e.g. 43.7948, -79.3482
+
+time_shift = -4 * u.hour
+# e.g. print(Time.now() + time_shift)
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
