@@ -14,7 +14,7 @@ j_ipInfo = json.loads(ipInfo)
 latitude = j_ipInfo["location"]["latitude"]
 longitude = j_ipInfo["location"]["longitude"]
 '''
-
+#
 # option 2: manually enter the address of the observer
 import geopy as gpy
 locator = gpy.Nominatim(user_agent='myGeocoder')
