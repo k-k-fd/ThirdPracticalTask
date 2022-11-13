@@ -23,5 +23,5 @@ location = locator.geocode('Toronto, Ontario, Canada')
 Latitude = location.latitude
 Longitude = location.longitude
 
-# obj = hp.HEALPix(nside=12)
-# obj.cone_search_lonlat('10', '10', 5)
+obj = hp.HEALPix(nside=12)
+obj.cone_search_lonlat(Longitude, Latitude, 5)
