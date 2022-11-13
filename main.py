@@ -1,13 +1,27 @@
-import astropy.units as u
-from astropy.coordinates import EarthLocation
-from astropy.time import Time
+# import astropy as ap
+import astropy_healpix as hp
 
-obs = EarthLocation(lat = 43 * u.deg + 79 * u.arcmin + 48 * u.arcsec, lon = -79 * u.deg + 34 * u.arcmin + 82 * u.arcsec)
-# e.g. 43.7948, -79.3482
+'''
+# option 1: detect automatically, based on the device IP 
+# (can have discrepancy from the real location) requesting an online service
+# in case of frequent requests throws "HTTPError: 429 Client Error: 
+# Too Many Requests for url: https://api.ipregistry.co/"
+from ipregistry import IpregistryClient
+import json
+client = IpregistryClient("tryout")
+ipInfo = client.lookup()
+j_ipInfo = json.loads(ipInfo)
+latitude = j_ipInfo["location"]["latitude"]
+longitude = j_ipInfo["location"]["longitude"]
+'''
 
-time_shift = -4 * u.hour
-# e.g. print(Time.now() + time_shift)
+# option 2: manually enter the address of the observer
+import geopy as gpy
+locator = gpy.Nominatim(user_agent='myGeocoder')
+location = locator.geocode('Toronto, Ontario, Canada')
+# print('Latitude = {}, Longitude = {}'.format(location.latitude, location.longitude))
+Latitude = location.latitude
+Longitude = location.longitude
 
-print(dir(astropy.time))
-
-
+obj = hp.HEALPix(nside=12)
+obj.cone_search_lonlat(Longitude, Latitude, 5)
