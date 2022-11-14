@@ -1,4 +1,4 @@
-# import astropy as ap
+from astropy import units as u
 import astropy_healpix as hp
 
 '''
@@ -19,9 +19,11 @@ longitude = j_ipInfo["location"]["longitude"]
 import geopy as gpy
 locator = gpy.Nominatim(user_agent='myGeocoder')
 location = locator.geocode('Toronto, Ontario, Canada')
-# print('Latitude = {}, Longitude = {}'.format(location.latitude, location.longitude))
-Latitude = location.latitude
-Longitude = location.longitude
+# print('Latitude = {}'
+#       ', Longitude = {}'
+#       .format(location.latitude, location.longitude))
+lat = location.latitude
+long = location.longitude
 
-obj = hp.HEALPix(nside=12)
-obj.cone_search_lonlat(Longitude, Latitude, 5)
+obj = hp.HEALPix(nside=16)
+print(obj.cone_search_lonlat(long * u.deg, lat * u.deg, radius=10 * u.deg))
