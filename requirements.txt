@@ -1,0 +1,5 @@
+astropy==5.1.1
+geopy==2.2.0
+ipregistry==3.2.0
+json5 @ file:///tmp/build/80754af9/json5_1624432770122/work
+matplotlib @ file:///C:/ci/matplotlib-suite_1660169687702/work
